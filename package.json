@@ -1,0 +1,11 @@
+{
+  "name": "react_workshop",
+  "version": "1.0.0",
+  "description": "react workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mateusz Palyz",
+  "license": "ISC"
+}
