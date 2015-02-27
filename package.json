@@ -2,22 +2,31 @@
   "name": "react_workshop",
   "version": "1.0.0",
   "description": "react workshop",
-  "main": "src/app.js",
+  "main": "src/app.js.coffee",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server dist --silent",
-    "watch": "npm start & watchify . -o dist/app.js --verbose --debug --extension .jsx"
+    "watch": "npm start & watchify . -o dist/app.js --verbose --debug --extension .cjsx"
   },
   "author": "Mateusz Palyz",
   "license": "ISC",
   "devDependencies": {
     "browserify": "^9.0.3",
+    "coffee-reactify": "^2.4.1",
     "http-server": "^0.7.5",
+    "react": "^0.12.2",
     "watchify": "^2.4.0"
   },
   "dependencies": {
     "browserify": "^9.0.3",
+    "coffee-reactify": "^2.4.1",
     "http-server": "^0.7.5",
+    "react": "^0.12.2",
     "watchify": "^2.4.0"
+  },
+  "browserify": {
+    "transform": [
+      "coffee-reactify"
+    ]
   }
 }
