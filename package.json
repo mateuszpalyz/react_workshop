@@ -10,9 +10,13 @@
   "author": "Mateusz Palyz",
   "license": "ISC",
   "devDependencies": {
-    "http-server": "^0.7.5"
+    "browserify": "^9.0.3",
+    "http-server": "^0.7.5",
+    "watchify": "^2.4.0"
   },
   "dependencies": {
-    "http-server": "^0.7.5"
+    "browserify": "^9.0.3",
+    "http-server": "^0.7.5",
+    "watchify": "^2.4.0"
   }
 }
