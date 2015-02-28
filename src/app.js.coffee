@@ -27,9 +27,7 @@ RecentStories = React.createClass
 
 Stories = React.createClass
   getInitialState: ->
-    {
-      collection: []
-    }
+    collection: []
 
   componentDidMount: ->
     $.get @props.source, ((result) ->
@@ -63,15 +61,13 @@ NotFound = React.createClass
 
 errorTitle = <h3>Error</h3>
 
-routes = (
+routes =
   <Route handler={App}>
     <Route name='popular' path='popular' handler={PopularStories}/>
     <Route name='recent' path='recent' handler={RecentStories}/>
     <Redirect from='/' to='popular'/>
     <NotFoundRoute handler={NotFound}/>
   </Route>
-  )
-
 
 Router.run routes, (Handler) ->
   React.render <Handler/>, document.getElementById('content')
