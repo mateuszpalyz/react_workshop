@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server dist --silent",
-    "watch": "npm start & watchify . -o dist/app.js --verbose --debug --extension .cjsx"
+    "watch": "npm start & watchify . -o dist/app.js --verbose --debug --extension .cjsx",
+    "postinstall": "browserify . -o dist/app.js --verbose --debug --extension .cjsx"
   },
   "author": "Mateusz Palyz",
   "license": "ISC",
