@@ -5,14 +5,25 @@ Col = require('react-bootstrap').Col
 ListGroup = require('react-bootstrap').ListGroup
 ListGroupItem = require('react-bootstrap').ListGroupItem
 Nav = require('react-bootstrap').Nav
-NavItem = require('react-bootstrap').NavItem
+NavItemLink = require('react-router-bootstrap').NavItemLink
+Panel = require('react-bootstrap').Panel
+Router = require('react-router')
+{Route, Redirect, NotFoundRoute, RouteHandler} = Router
 
 App = React.createClass
   render: ->
     <Row>
-      <Col md={9}><Stories source='https://fierce-gorge-1132.herokuapp.com/stories'/></Col>
-      <Col md={3}>{navMenu}</Col>
+      <Col md={9}><RouteHandler/></Col>
+      <Col md={3}><NavMenu/></Col>
     </Row>
+
+PopularStories = React.createClass
+  render: ->
+    <Stories source='https://fierce-gorge-1132.herokuapp.com/stories'/>
+
+RecentStories = React.createClass
+  render: ->
+    <Stories source='https://fierce-gorge-1132.herokuapp.com/stories/recent'/>
 
 Stories = React.createClass
   getInitialState: ->
@@ -37,11 +48,30 @@ Story = React.createClass
   render: ->
     <ListGroupItem header=@props.story.title href={@props.story.url}>{@props.story.url}</ListGroupItem>
 
-navMenu = (
-  <Nav bsStyle='pills' stacked activeKey={1}>
-    <NavItem eventKey={1} href='#'>Recent</NavItem>
-    <NavItem eventKey={2} href='#'>Popular</NavItem>
-  </Nav>
+NavMenu = React.createClass
+  render: ->
+    <Nav bsStyle='pills' stacked>
+      <NavItemLink to='popular'>Popular</NavItemLink>
+      <NavItemLink to='recent'>Recent</NavItemLink>
+    </Nav>
+
+NotFound = React.createClass
+  render: ->
+    <Panel header={errorTitle}>
+      The page you were looking for doesn't exist.
+    </Panel>
+
+errorTitle = <h3>Error</h3>
+
+routes = (
+  <Route handler={App}>
+    <Route name='popular' path='popular' handler={PopularStories}/>
+    <Route name='recent' path='recent' handler={RecentStories}/>
+    <Redirect from='/' to='popular'/>
+    <NotFoundRoute handler={NotFound}/>
+  </Route>
   )
 
-React.render <App/>, document.getElementById('content')
+
+Router.run routes, (Handler) ->
+  React.render <Handler/>, document.getElementById('content')
