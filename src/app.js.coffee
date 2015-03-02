@@ -37,10 +37,7 @@ Stories = React.createClass
       ).bind(this)
 
   render: ->
-    storiesCollection = []
-    for story in @state.collection
-      storiesCollection.push <Story story={story}/>
-    <ListGroup>{storiesCollection}</ListGroup>
+    <ListGroup>{<Story story={story}/> for story in @state.collection}</ListGroup>
 
 Story = React.createClass
   render: ->
