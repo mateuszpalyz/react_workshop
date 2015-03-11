@@ -1,13 +1,8 @@
 React = require 'react'
 $ = require 'jquery'
-Row = require('react-bootstrap').Row
-Col = require('react-bootstrap').Col
-ListGroup = require('react-bootstrap').ListGroup
-ListGroupItem = require('react-bootstrap').ListGroupItem
-Nav = require('react-bootstrap').Nav
-NavItemLink = require('react-router-bootstrap').NavItemLink
-Panel = require('react-bootstrap').Panel
 Router = require('react-router')
+NavItemLink = require('react-router-bootstrap').NavItemLink
+{Row, Col, ListGroup, ListGroupItem, Nav, Panel} = require('react-bootstrap')
 {Route, Redirect, NotFoundRoute, RouteHandler} = Router
 
 App = React.createClass
