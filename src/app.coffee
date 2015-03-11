@@ -30,11 +30,10 @@ Stories = React.createClass
     collection: []
 
   componentDidMount: ->
-    $.get @props.source, ((result) ->
+    $.get @props.source, (result) =>
       if @isMounted()
         @setState
           collection: result
-      ).bind(this)
 
   render: ->
     <ListGroup>{<Story story={story}/> for story in @state.collection}</ListGroup>
